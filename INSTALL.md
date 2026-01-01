@@ -152,7 +152,7 @@ python -m pip install https://paddle-whl.bj.bcebos.com/nightly/cu126/safetensors
 ```bash
 # 安裝 huggingface_hub 並下載模型(會產生 models/ 資料夾)
 pip install huggingface_hub
-python download_paddleocr_vl.py
+python ./download_model/download_paddleocr_vl.py
 
 # 安裝 OCR 套件與 Flash-Attention 2.8.2
 pip install paddleocr[all]
@@ -233,7 +233,7 @@ conda activate deepseek-ocr
 
 ```bash
 pip install huggingface_hub
-python download_deepseek_ocr.py
+python ./download_model/download_deepseek_ocr.py
 ```
 
 ---

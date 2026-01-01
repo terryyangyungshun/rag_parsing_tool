@@ -89,7 +89,7 @@
 　　然後執行 download 指令下載模型：
 
 ```bash
-    python download_paddleocr_vl.py
+    python ./download_model/download_paddleocr_vl.py
 ```
 
 　　下載完後，會在目前目錄下產生一個 `models` 資料夾，裡面就有兩個模型權重。

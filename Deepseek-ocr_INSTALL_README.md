@@ -27,7 +27,7 @@
 然後執行 download 指令下載模型：
 
 ```bash
-    python download_deepseek_ocr.py
+    python ./download_model/download_deepseek_ocr.py
 ```
 
 <div align=center><img src="./assets/20260101201718.png" width=70%></div>
