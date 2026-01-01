@@ -42,9 +42,9 @@ def test_mineru_api(pdf_path: str, backend: str = "pipeline"):
                 'parse_method': 'auto',
                 'lang_list': 'ch', # 預設簡體中文, chinese_cht 繁體中文, en 英文
                 'return_md': 'true',
-                'return_middle_json': 'false',
-                'return_model_output': 'false',
-                'return_content_list': 'false',
+                'return_middle_json': 'true',
+                'return_model_output': 'true',
+                'return_content_list': 'true',
                 'start_page_id': '0',
                 'end_page_id': '1',  # 只處理前2頁，快速測試
             }
