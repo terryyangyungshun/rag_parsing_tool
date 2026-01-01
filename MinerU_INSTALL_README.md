@@ -7,7 +7,7 @@
 &emsp;&emsp;我們使用的是`Ubuntu 24.04` 系統，可以透過`cat /etc/os-release` 指令查看系統版本，如下圖所示：
 
 <div align="center">    
-    <img src="./assert/20260101102412.png" alt="MinerU 配置參考" width="70%">
+    <img src="./assets/20260101102412.png" alt="MinerU 配置參考" width="70%">
 </div>
 
 
@@ -16,7 +16,7 @@
 &emsp;&emsp;在`Linux` 系統下，可以透過`nvidia-smi` 指令查看`CUDA` 版本，這裡的伺服器配置是單卡的`RTX 4090` 顯示卡，如下圖所示：
 
 <div align="center">
-    <img src="./assert/20260101102652.png" alt="MinerU 配置參考" width="70%">
+    <img src="./assets/20260101102652.png" alt="MinerU 配置參考" width="70%">
 </div>
 
 &emsp;&emsp;`CUDA Version` 顯示的版本號必須 `>= 12.1`，若顯示的版本號小於`12.1`，需要自行升級`CUDA` 版本。
@@ -26,7 +26,7 @@
 &emsp;&emsp;我們使用的是`Anaconda` 安裝的`Conda` 環境，可以透過`conda --version` 指令查看`Conda` 版本，如下圖所示：
 
 <div align="center">
-    <img src="./assert/20260101102924.png" alt="MinerU 配置參考" width="70%">
+    <img src="./assets/20260101102924.png" alt="MinerU 配置參考" width="70%">
 </div>
 
 &emsp;&emsp;如果出現`Conda not found` 等錯誤，需先安裝`Conda` 環境，再執行接下來的步驟。
@@ -50,11 +50,11 @@ wget https://github.com/opendatalab/MinerU/archive/refs/tags/mineru-2.6.4-releas
 tar -xzvf mineru-2.6.4-released.tar.gz
 ```
 <div align="center">
-    <img src="./assert/20260101 102024.png" alt="下載源碼" width="70%">
+    <img src="./assets/20260101 102024.png" alt="下載源碼" width="70%">
 </div>
 
 <div align="center">
-    <img src="./assert/20260101 102227.png" alt="下載源碼" width="70%">
+    <img src="./assets/20260101 102227.png" alt="下載源碼" width="70%">
 </div>
 
 - **步驟 7. 安裝`MinerU` 專案相依套件**
@@ -66,13 +66,13 @@ tar -xzvf mineru-2.6.4-released.tar.gz
 ```
 
 <div align="center">
-    <img src="./assert/20260101103334.png" alt="MinerU 配置參考" width="87%">
+    <img src="./assets/20260101103334.png" alt="MinerU 配置參考" width="87%">
 </div>
 
 &emsp;&emsp;透過`pip show mineru` 指令查看`MinerU` 專案的版本：
 
 <div align="center">
-    <img src="./assert/20260101103553.png" alt="MinerU 配置參考" width="70%">
+    <img src="./assets/20260101103553.png" alt="MinerU 配置參考" width="70%">
 </div>
 
 &emsp;&emsp;至此，基礎的`MinerU` 專案相依套件就安裝完成了，接下來我們需要下載`MinerU` 專案中用到的模型檔案，並進行專案設定。
@@ -88,7 +88,7 @@ tar -xzvf mineru-2.6.4-released.tar.gz
 
 
 <div align="center">
-    <img src="./assert/20260101103822.png" alt="MinerU 配置參考" width="80%">
+    <img src="./assets/20260101103822.png" alt="MinerU 配置參考" width="80%">
 </div>
 
 &emsp;&emsp;等待下載完成後，所有模型檔案的預設儲存路徑為：
@@ -98,13 +98,13 @@ tar -xzvf mineru-2.6.4-released.tar.gz
 ```
 
 <div align="center">
-    <img src="./assert/20260101104126.png" alt="MinerU 配置參考" width="80%">
+    <img src="./assets/20260101104126.png" alt="MinerU 配置參考" width="80%">
 </div>
 
 &emsp;&emsp;並且，也會自動在`~/mineru.json` 檔案中設定用於後續使用的模型路徑。
 
 <div align="center">
-    <img src="./assert/20260101104331.png" alt="MinerU 配置參考" width="80%">
+    <img src="./assets/20260101104331.png" alt="MinerU 配置參考" width="80%">
 </div>
 
 &emsp;&emsp;至此，`MinerU` 專案的本地設定就全部完成了，接下來我們可以嘗試執行`MinerU` 專案並進行`PDF` 文件解析測試。
@@ -118,14 +118,14 @@ tar -xzvf mineru-2.6.4-released.tar.gz
     mineru-api --port 50000
 ```
 <div align="center">
-    <img src="./assert/20260101 114910.png" alt="MinerU 配置参考" width="70%">
+    <img src="./assets/20260101 114910.png" alt="MinerU 配置参考" width="70%">
 </div>
 
 
-&emsp;&emsp;啟動後，在`192.168.110.131:50000/docs`中可以看到介面服務：
+&emsp;&emsp;啟動後，在`127.0.0.1:50000/docs`中可以看到介面服務：
 
 <div align="center">
-    <img src="./assert/202511061234642.png" alt="MinerU 配置参考" width="70%">
+    <img src="./assets/202511061234642.png" alt="MinerU 配置参考" width="70%">
 </div>
 
 # MinerU vLLM API 服務連接測試
@@ -137,9 +137,9 @@ tar -xzvf mineru-2.6.4-released.tar.gz
 ```
 成功後，會看到如下的結果：
 <div align="center">
-    <img src="./assert/20260101114618.png" alt="MinerU vLLM API 服務連接測試" width="70%">
+    <img src="./assets/20260101114618.png" alt="MinerU vLLM API 服務連接測試" width="70%">
 </div>
 
 <div align="center">
-    <img src="./assert/20260101 115057.png" alt="MinerU vLLM API 服務連接測試" width="70%">
+    <img src="./assets/20260101 115057.png" alt="MinerU vLLM API 服務連接測試" width="70%">
 </div>

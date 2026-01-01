@@ -19,7 +19,7 @@
 
 　　執行完會像下面這張圖：
 
-<div align=center><img src="./assert/20260101151552.png" width=70%></div>
+<div align=center><img src="./assets/20260101151552.png" width=70%></div>
 
 　　接下來要啟動虛擬環境：
 
@@ -29,7 +29,7 @@
 
 　　啟動後，你會看到命令列前面多了 `(ppocr-vllm)`，這就代表你已經進到虛擬環境裡了。
 
-<div align=center><img src="./assert/20260101151749.png" width=70%></div>
+<div align=center><img src="./assets/20260101151749.png" width=70%></div>
 
 ### 2. 安裝 PaddleOCR 工具框架
 
@@ -51,7 +51,7 @@
 
 　　安裝過程如下圖：
 
-<div align=center><img src="./assert/20260101152826.png" width=70%></div>
+<div align=center><img src="./assets/20260101152826.png" width=70%></div>
 
 　　安裝好之後，建議先驗證 PaddlePaddle 有沒有裝好，請執行下面這行指令：
 
@@ -59,7 +59,7 @@
     python -c "import paddle; paddle.utils.run_check()"
 ```
 
-<div align=center><img src="./assert/20260101153222.png" width=70%></div>
+<div align=center><img src="./assets/20260101153222.png" width=70%></div>
 
 　　接下來要注意，PaddleOCR-VL 會用 `safetensors` 格式來存模型權重，要另外安裝指定版本，請執行：
 
@@ -69,7 +69,7 @@
 
 　　這是目前 PaddleOCR-VL 相容的 safetensors 版本，安裝很快。
 
-<div align=center><img src="./assert/20260101153414.png" width=70%></div>
+<div align=center><img src="./assets/20260101153414.png" width=70%></div>
 
 ### 3. 下載 PaddleOCR-VL 模型
 
@@ -102,7 +102,7 @@
     pip install paddleocr[all]
 ```
 
-<div align=center><img src="./assert/20260101155751.png" width=70%></div>
+<div align=center><img src="./assets/20260101155751.png" width=70%></div>
 
 　　再來要安裝 `flash-atten` 加速函式庫，請執行：
 
@@ -110,21 +110,21 @@
     pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.2/flash_attn-2.8.2+cu12torch2.4cxx11abiFALSE-cp311-cp311-linux_x86_64.whl --no-build-isolation
 ```
 
-<div align=center><img src="./assert/20260101161727.png" width=70%></div>
+<div align=center><img src="./assets/20260101161727.png" width=70%></div>
 　　然後，用 PaddleOCR CLI 安裝 vLLM 的推論加速服務相依套件：
 
 ```bash
     paddleocr install_genai_server_deps vllm
 ```
 
-<div align=center><img src="./assert/20260101162608.png" width=70%></div>
+<div align=center><img src="./assets/20260101162608.png" width=70%></div>
 　　安裝好後，記得把 `flash-atten` 降回 v2.7.3：
 
 ```bash
     pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.8cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 ```
 
-<div align=center><img src="./assert/20260101162451.png" width=70%></div>
+<div align=center><img src="./assets/20260101162451.png" width=70%></div>
 
 ### 5. 啟動 PaddleOCR-VL API 服務
 
@@ -138,7 +138,7 @@
     --port 8118
 ```
 
-<div align=center><img src="./assert/20260101163713.png" width=70%></div>
+<div align=center><img src="./assets/20260101163713.png" width=70%></div>
 
 　　vLLM 服務啟動後，這個終端機視窗要保持執行，不要關掉。再開一個新的終端機，用 paddlex 連線剛剛啟動的 paddleocr-vl 服務，先初始化服務設定：
 
@@ -146,14 +146,14 @@
     paddlex --install serving
 ```
 
-<div align=center><img src="./assert/20260101164051.png" width=70%></div>
+<div align=center><img src="./assets/20260101164051.png" width=70%></div>
 　　然後產生 .yaml 設定檔(預設會在目前目錄)：
 
 ```bash
     paddlex --get_pipeline_config PaddleOCR-VL
 ```
 
-<div align=center><img src="./assert/20260101164253.png" width=70%></div>
+<div align=center><img src="./assets/20260101164253.png" width=70%></div>
 
 　　編輯產生的 `PaddleOCR-VL.yaml` 設定檔，把 `genai_config` 改成像這樣：
 
@@ -169,11 +169,11 @@ genai_config:
     paddlex --serve --pipeline PaddleOCR-VL.yaml --port 10800 --paddle_model_dir ~/rag_parsing_tool/models
 ```
 
-<div align=center><img src="./assert/20260101164915.png" width=70%></div>
+<div align=center><img src="./assets/20260101164915.png" width=70%></div>
 
-　　啟動成功後，可以用瀏覽器打開 http://192.168.110.131:10800/docs 來看 API 文件，像下面這樣：
+　　啟動成功後，可以用瀏覽器打開 http://127.0.0.1:10800/docs 來看 API 文件，像下面這樣：
 
-<div align=center><img src="./assert/202511071213741.png" width=70%></div>
+<div align=center><img src="./assets/202511071213741.png" width=70%></div>
 
 　　這樣 PaddleOCR API 服務就啟動完成囉！
 
@@ -184,6 +184,6 @@ genai_config:
     python paddleocr_api_test.py
 ```
 成功後，會看到如下的結果：
-<div align=center><img src="./assert/20260101171915.png" width=70%></div>
+<div align=center><img src="./assets/20260101171915.png" width=70%></div>
 
-<div align=center><img src="./assert/20260101172201.png" width=70%></div>
+<div align=center><img src="./assets/20260101172201.png" width=70%></div>
