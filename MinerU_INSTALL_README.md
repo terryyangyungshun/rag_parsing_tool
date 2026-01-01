@@ -133,7 +133,7 @@ tar -xzvf mineru-2.6.4-released.tar.gz
 執行 `mineru_api_test.py` 腳本，測試`MinerU` vLLM API 服務是否能正常連接：
 
 ```bash
-    python mineru_api_test.py
+    python ./api_test/mineru_api_test.py
 ```
 成功後，會看到如下的結果：
 <div align="center">

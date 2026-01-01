@@ -181,7 +181,7 @@ genai_config:
 執行 `paddleocr_api_test.py` 腳本，測試`PaddleOCR` vLLM API 服務是否能正常連接：
 
 ```bash
-    python paddleocr_api_test.py
+    python ./api_test/paddleocr_api_test.py
 ```
 成功後，會看到如下的結果：
 <div align=center><img src="./assets/20260101171915.png" width=70%></div>

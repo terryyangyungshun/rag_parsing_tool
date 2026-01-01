@@ -83,5 +83,8 @@ pip install flash-attn==2.7.3 --no-build-isolation
 ## 🧪 連接測試
 
 執行 `deepseek_ocr_api_test.py` 腳本，測試 `DeepSeek-OCR` API 服務是否能正常連接：
+```bash
+    python ./api_test/deepseek_ocr_api_test.py
+```
 
 <div align=center><img src="./assets/2026101214403.png" width=70%></div>
