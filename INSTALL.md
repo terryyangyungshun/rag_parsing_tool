@@ -118,3 +118,9 @@ mineru-api --port 50000
 服務啟動後，您可以開啟瀏覽器訪問以下位址，查看 Swagger UI 互動式文件：
 
 [http://localhost:50000/docs](http://localhost:50000/docs)
+
+🧪 連接測試
+您可以建立一個測試腳本 mineru_api_test.py 來驗證服務：
+```bash
+python mineru_api_test.py
+```
