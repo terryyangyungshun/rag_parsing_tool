@@ -1,6 +1,6 @@
-# 📖 多模型文件解析工具安裝手冊 (MinerU & PaddleOCR-VL)
+# 📖 多模型文件解析工具安裝手冊 (MinerU、PaddleOCR-VL、DeepSeek-OCR)
 
-本文件會帶你在 **Ubuntu 24.04** 環境下完成 `MinerU` 和 `PaddleOCR-VL` 的部署。這兩套工具分別代表目前主流的 PDF 結構化解析與視覺語言模型 OCR 技術。
+本文件會帶你在 **Ubuntu 24.04** 環境下完成 `MinerU`、`PaddleOCR-VL` 以及 `DeepSeek-OCR` 的部署。這三套工具分別代表目前主流的 PDF 結構化解析與視覺語言模型 OCR 技術。
 
 ---
 
@@ -113,8 +113,10 @@ mineru-api --port 50000
 執行測試腳本驗證服務：
 
 ```bash
-python mineru_api_test.py
+python ./api_test/mineru_api_test.py
 ```
+
+> 詳細安裝與操作流程請參考：[MinerU 安裝說明文件](./MinerU_INSTALL_README.md)
 
 ---
 
@@ -203,7 +205,74 @@ paddlex --serve --pipeline PaddleOCR-VL.yaml --port 10800 --paddle_model_dir ./m
 執行測試腳本驗證服務：
 
 ```bash
-python paddleocr_api_test.py
+python ./api_test/paddleocr_api_test.py
 ```
+
+> 詳細安裝與操作流程請參考：[PaddleOCR-VL 安裝說明文件](./PaddleOCR-VL_INSTALL_README.md)
+
+---
+
+## 🛠️ 第三部分：[DeepSeek-OCR 安裝指南](./Deepseek-ocr_README.md)
+
+DeepSeek-OCR 提供高效能的 OCR 與多模態文件解析能力，支援 vLLM 推論加速，適合大規模文件處理需求。
+
+### 1. 建立 Python 虛擬環境
+
+請先建立獨立的 Python 虛擬環境，避免與其他專案相依套件衝突：
+
+```bash
+conda create -n deepseek-ocr python=3.12.9 -y
+conda activate deepseek-ocr
+```
+
+---
+
+### 2. 下載模型
+
+安裝 huggingface\_hub 套件並下載 DeepSeek-OCR 模型：
+
+```bash
+pip install huggingface_hub
+python download_deepseek_ocr.py
+```
+
+---
+
+### 3. 安裝相關相依套件
+
+安裝 torch、vllm、requirements.txt 及 flash-attention：
+
+```bash
+pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
+pip install https://github.com/vllm-project/vllm/releases/download/v0.8.5/vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl
+pip install -r DeepSeek-OCR-vllm/requirements.txt
+pip install flash-attn==2.7.3 --no-build-isolation
+```
+
+---
+
+### 4. 啟動 DeepSeek OCR API 服務
+
+使用我們提供的 `ocr_client.py` 啟動 API 服務：
+
+```bash
+python ~/rag_parsing_tool/DeepSeek-OCR-vllm/ocr_client.py --model-path deepseek-ai/DeepSeek-OCR --port 8797
+```
+
+啟動成功後，可用瀏覽器開啟 <http://127.0.0.1:8797/docs> 查看 API 文件。
+
+---
+
+## 🧪 連接測試
+
+執行測試腳本驗證服務：
+
+```bash
+python ./api_test/deepseek_ocr_api_test.py
+```
+
+---
+
+> 詳細安裝與操作流程請參考：[DeepSeek-OCR 安裝說明文件](./Deepseek-ocr_README.md)
 
 ---
